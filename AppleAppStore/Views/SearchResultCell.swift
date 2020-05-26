@@ -7,15 +7,37 @@
 //
 
 import UIKit
+import SDWebImage
 
 class SearchResultCell: UICollectionViewCell {
     
-    let imageView: UIImageView = {
+    var appResult: Result! {
+        didSet {
+            nameLabel.text = appResult.trackName
+            categoryLabel.text = appResult.primaryGenreName
+            ratingsLabel.text = "Rating: \(appResult.averageUserRating ?? 0)"
+            
+            let url = URL(string: appResult.artworkUrl100)
+            appIconImageView.sd_setImage(with: url)
+            
+            screenshot1ImageView.sd_setImage(with: URL(string: appResult.screenshotUrls[0]))
+            if appResult.screenshotUrls.count > 1 {
+                screenshot2ImageView.sd_setImage(with: URL(string: appResult.screenshotUrls[1]))
+            }
+            
+            if appResult.screenshotUrls.count > 2 {
+                screenshot3ImageView.sd_setImage(with: URL(string: appResult.screenshotUrls[2]))
+            }
+        }
+    }
+    
+    let appIconImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .red
         iv.widthAnchor.constraint(equalToConstant: 64).isActive = true
         iv.heightAnchor.constraint(equalToConstant: 64).isActive = true
         iv.layer.cornerRadius = 12
+        iv.clipsToBounds = true
         return iv
     }()
     
@@ -49,28 +71,45 @@ class SearchResultCell: UICollectionViewCell {
         return button
     }()
     
+    lazy var screenshot1ImageView = self.createScreenshotImageView()
+    lazy var screenshot2ImageView = self.createScreenshotImageView()
+    lazy var screenshot3ImageView = self.createScreenshotImageView()
+    
+    func createScreenshotImageView() -> UIImageView {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .blue
+        imageView.layer.cornerRadius = 8
+        imageView.clipsToBounds = true
+        imageView.layer.borderWidth = 0.5
+        imageView.layer.borderColor = UIColor(white: 0.5, alpha: 0.5).cgColor
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .yellow
+        // optional
         
-        let labelsStackView = UIStackView(arrangedSubviews: [
-            nameLabel, categoryLabel, ratingsLabel
+        let infoTopStackView = UIStackView(arrangedSubviews: [
+            appIconImageView,
+            VerticalStackView(arrangedSubviews: [
+                nameLabel, categoryLabel, ratingsLabel
+                ]),
+            getButton
             ])
-        labelsStackView.axis = .vertical
+        infoTopStackView.spacing = 12
+        infoTopStackView.alignment = .center
         
-        let stackView = UIStackView(arrangedSubviews: [
-            imageView, labelsStackView, getButton
-            ])
-        stackView.spacing = 12
-        stackView.alignment = .center
+        let screenshotsStackView = UIStackView(arrangedSubviews: [screenshot1ImageView, screenshot2ImageView, screenshot3ImageView])
+        screenshotsStackView.spacing = 12
+        screenshotsStackView.distribution = .fillEqually
         
-        addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
+        let overallStackView = VerticalStackView(arrangedSubviews: [
+            infoTopStackView, screenshotsStackView], spacing: 16)
+        
+        addSubview(overallStackView)
+        overallStackView.fillSuperview(padding: .init(top: 16, left: 16, bottom: 16, right: 16))
     }
     
     required init?(coder aDecoder: NSCoder) {

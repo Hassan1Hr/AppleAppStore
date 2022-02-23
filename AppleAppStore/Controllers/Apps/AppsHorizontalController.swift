@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class AppsHorizontalController: BaseListController, UICollectionViewDelegateFlowLayout {
+class AppsHorizontalController: HorizontalSnappingController, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
     var appGroup: AppGroup?
@@ -20,9 +20,6 @@ class AppsHorizontalController: BaseListController, UICollectionViewDelegateFlow
         
         collectionView.register(AppRowCell.self, forCellWithReuseIdentifier: cellId)
         
-        if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.scrollDirection = .horizontal
-        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

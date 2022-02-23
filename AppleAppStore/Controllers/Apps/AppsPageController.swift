@@ -18,7 +18,7 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     
     
     let activityIndicatorView: UIActivityIndicatorView = {
-        let aiv = UIActivityIndicatorView(style: .whiteLarge)
+        let aiv = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
         aiv.color = .black
         aiv.startAnimating()
         aiv.hidesWhenStopped = true

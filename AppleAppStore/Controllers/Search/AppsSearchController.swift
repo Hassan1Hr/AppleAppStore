@@ -57,7 +57,7 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
             
             // this will actually fire my search
             Service.shared.fetchApps(searchTerm: searchText) { (res, err) in
-                self.appResults = res
+                self.appResults = res?.results ?? []
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }

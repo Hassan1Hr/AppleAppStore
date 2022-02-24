@@ -16,6 +16,8 @@
 		0444EB8227C6CA7A001074A1 /* HorizontalSnappingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444EB8127C6CA7A001074A1 /* HorizontalSnappingController.swift */; };
 		0444EB8527C70498001074A1 /* AppDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444EB8427C70498001074A1 /* AppDetailController.swift */; };
 		04459C1127C7850D00690E44 /* AppDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04459C1027C7850D00690E44 /* AppDetailCell.swift */; };
+		04459C1327C78C7800690E44 /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04459C1227C78C7800690E44 /* PreviewCell.swift */; };
+		04459C1527C78C9600690E44 /* PreviewScreenshotsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04459C1427C78C9600690E44 /* PreviewScreenshotsController.swift */; };
 		047D5E9C2473DB63008D56EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D5E9B2473DB63008D56EC /* AppDelegate.swift */; };
 		047D5E9E2473DB63008D56EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D5E9D2473DB63008D56EC /* SceneDelegate.swift */; };
 		047D5EA02473DB63008D56EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D5E9F2473DB63008D56EC /* ViewController.swift */; };
@@ -47,6 +49,8 @@
 		0444EB8127C6CA7A001074A1 /* HorizontalSnappingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSnappingController.swift; sourceTree = "<group>"; };
 		0444EB8427C70498001074A1 /* AppDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailController.swift; sourceTree = "<group>"; };
 		04459C1027C7850D00690E44 /* AppDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailCell.swift; sourceTree = "<group>"; };
+		04459C1227C78C7800690E44 /* PreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
+		04459C1427C78C9600690E44 /* PreviewScreenshotsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewScreenshotsController.swift; sourceTree = "<group>"; };
 		047D5E982473DB63008D56EC /* AppleAppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleAppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		047D5E9B2473DB63008D56EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		047D5E9D2473DB63008D56EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				0444EB8427C70498001074A1 /* AppDetailController.swift */,
+				04459C1427C78C9600690E44 /* PreviewScreenshotsController.swift */,
 			);
 			path = "App Details";
 			sourceTree = "<group>";
@@ -96,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				04459C1027C7850D00690E44 /* AppDetailCell.swift */,
+				04459C1227C78C7800690E44 /* PreviewCell.swift */,
 			);
 			path = AppDetails;
 			sourceTree = "<group>";
@@ -360,6 +366,7 @@
 				0444EB7E27C6C3E5001074A1 /* SocialApp.swift in Sources */,
 				0444EB8027C6C97F001074A1 /* CollectionViewSnappingLayout.swift in Sources */,
 				04DFC42027C5A2EF001AD5C8 /* AppsPageController.swift in Sources */,
+				04459C1527C78C9600690E44 /* PreviewScreenshotsController.swift in Sources */,
 				047D5EA02473DB63008D56EC /* ViewController.swift in Sources */,
 				04F18CA3247CE2C500C1BEE4 /* Service.swift in Sources */,
 				047D5E9C2473DB63008D56EC /* AppDelegate.swift in Sources */,
@@ -378,6 +385,7 @@
 				0444EB7A27C6B0A5001074A1 /* AppsHeaderCell.swift in Sources */,
 				04459C1127C7850D00690E44 /* AppDetailCell.swift in Sources */,
 				047D5EB12473E17A008D56EC /* AppsSearchController.swift in Sources */,
+				04459C1327C78C7800690E44 /* PreviewCell.swift in Sources */,
 				0444EB8227C6CA7A001074A1 /* HorizontalSnappingController.swift in Sources */,
 				04F18CA8247CE31700C1BEE4 /* VerticalStackView.swift in Sources */,
 				04DFC42227C5A33B001AD5C8 /* AppsHorizontalController.swift in Sources */,

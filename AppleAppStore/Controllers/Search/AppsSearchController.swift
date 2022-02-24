@@ -46,7 +46,6 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
         
         // introduce some delay before performing the search
         // throttling the search
@@ -54,7 +53,6 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
         timer?.invalidate()
         
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
-            
             // this will actually fire my search
             Service.shared.fetchApps(searchTerm: searchText) { (res, err) in
                 self.appResults = res?.results ?? []
@@ -62,7 +60,6 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
                     self.collectionView.reloadData()
                 }
             }
-            
         })
     }
     

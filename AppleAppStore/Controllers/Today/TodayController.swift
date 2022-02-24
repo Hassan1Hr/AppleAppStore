@@ -11,6 +11,7 @@ import UIKit
 class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     
     
+    var appFullscreenController: UIViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +23,55 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         collectionView.register(TodayCell.self, forCellWithReuseIdentifier: TodayCell.identifier)
     }
     
+    
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Animate fullscreen somehow...")
+        
+        let appFullscreenController = AppFullscreenController()
+        let redView = appFullscreenController.view!
+        redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemoveRedView)))
+        view.addSubview(redView)
+
+        addChild(appFullscreenController)
+        
+        self.appFullscreenController = appFullscreenController
+        
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+        
+        // absolute coordindates of cell
+        guard let startingFrame = cell.superview?.convert(cell.frame, to: nil) else { return }
+        
+        self.startingFrame = startingFrame
+        redView.frame = startingFrame
+        redView.layer.cornerRadius = 16
+        
+        // why i don't use a transition delegate?
+        
+        // we're using frames for animation
+        // frames aren't reliable enough for animations
+        
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+            
+            redView.frame = self.view.frame
+            
+            self.tabBarController?.tabBar.frame.origin.y += 100
+            
+        }, completion: nil)
+    }
+    
+    var startingFrame: CGRect?
+    
+    @objc func handleRemoveRedView(gesture: UITapGestureRecognizer) {
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+            
+            gesture.view?.frame = self.startingFrame ?? .zero
+            
+            self.tabBarController?.tabBar.frame.origin.y -= 100
+            
+        }, completion: { _ in
+            gesture.view?.removeFromSuperview()
+            self.appFullscreenController.removeFromParent()
+        })
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

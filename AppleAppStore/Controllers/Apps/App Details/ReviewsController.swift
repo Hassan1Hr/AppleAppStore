@@ -22,10 +22,11 @@ class ReviewsController: HorizontalSnappingController, UICollectionViewDelegateF
         
         collectionView.register(ReviewCell.self, forCellWithReuseIdentifier: ReviewCell.identifier)
         collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
+        collectionView.showsHorizontalScrollIndicator = false
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return reviews?.feed.entry.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -34,6 +35,11 @@ class ReviewsController: HorizontalSnappingController, UICollectionViewDelegateF
         cell.titleLabel.text = entry?.title.label
         cell.authorLabel.text = entry?.author.name.label
         cell.bodyLabel.text = entry?.content.label
+        for (index, view) in cell.starsStackView.arrangedSubviews.enumerated() {
+            if let ratingInt = Int(entry!.rating.label) {
+                view.alpha = index >= ratingInt ? 0 : 1
+            }
+        }
         return cell
     }
     

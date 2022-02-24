@@ -18,6 +18,9 @@
 		04459C1127C7850D00690E44 /* AppDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04459C1027C7850D00690E44 /* AppDetailCell.swift */; };
 		04459C1327C78C7800690E44 /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04459C1227C78C7800690E44 /* PreviewCell.swift */; };
 		04459C1527C78C9600690E44 /* PreviewScreenshotsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04459C1427C78C9600690E44 /* PreviewScreenshotsController.swift */; };
+		04459C1727C792B500690E44 /* ReviewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04459C1627C792B500690E44 /* ReviewsController.swift */; };
+		04459C1927C792E400690E44 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04459C1827C792E400690E44 /* ReviewCell.swift */; };
+		04459C1B27C7932900690E44 /* ReviewRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04459C1A27C7932900690E44 /* ReviewRowCell.swift */; };
 		047D5E9C2473DB63008D56EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D5E9B2473DB63008D56EC /* AppDelegate.swift */; };
 		047D5E9E2473DB63008D56EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D5E9D2473DB63008D56EC /* SceneDelegate.swift */; };
 		047D5EA02473DB63008D56EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047D5E9F2473DB63008D56EC /* ViewController.swift */; };
@@ -51,6 +54,9 @@
 		04459C1027C7850D00690E44 /* AppDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailCell.swift; sourceTree = "<group>"; };
 		04459C1227C78C7800690E44 /* PreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
 		04459C1427C78C9600690E44 /* PreviewScreenshotsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewScreenshotsController.swift; sourceTree = "<group>"; };
+		04459C1627C792B500690E44 /* ReviewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsController.swift; sourceTree = "<group>"; };
+		04459C1827C792E400690E44 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		04459C1A27C7932900690E44 /* ReviewRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRowCell.swift; sourceTree = "<group>"; };
 		047D5E982473DB63008D56EC /* AppleAppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleAppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		047D5E9B2473DB63008D56EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		047D5E9D2473DB63008D56EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +99,7 @@
 			children = (
 				0444EB8427C70498001074A1 /* AppDetailController.swift */,
 				04459C1427C78C9600690E44 /* PreviewScreenshotsController.swift */,
+				04459C1627C792B500690E44 /* ReviewsController.swift */,
 			);
 			path = "App Details";
 			sourceTree = "<group>";
@@ -102,6 +109,8 @@
 			children = (
 				04459C1027C7850D00690E44 /* AppDetailCell.swift */,
 				04459C1227C78C7800690E44 /* PreviewCell.swift */,
+				04459C1827C792E400690E44 /* ReviewCell.swift */,
+				04459C1A27C7932900690E44 /* ReviewRowCell.swift */,
 			);
 			path = AppDetails;
 			sourceTree = "<group>";
@@ -365,6 +374,7 @@
 				04F18CA6247CE2FA00C1BEE4 /* Result.swift in Sources */,
 				0444EB7E27C6C3E5001074A1 /* SocialApp.swift in Sources */,
 				0444EB8027C6C97F001074A1 /* CollectionViewSnappingLayout.swift in Sources */,
+				04459C1927C792E400690E44 /* ReviewCell.swift in Sources */,
 				04DFC42027C5A2EF001AD5C8 /* AppsPageController.swift in Sources */,
 				04459C1527C78C9600690E44 /* PreviewScreenshotsController.swift in Sources */,
 				047D5EA02473DB63008D56EC /* ViewController.swift in Sources */,
@@ -379,8 +389,10 @@
 				0444EB7827C6B082001074A1 /* AppsHeaderHorizontalController.swift in Sources */,
 				0444EB7627C6B067001074A1 /* AppsPageHeader.swift in Sources */,
 				04DFC42A27C5A41B001AD5C8 /* BaseListController.swift in Sources */,
+				04459C1B27C7932900690E44 /* ReviewRowCell.swift in Sources */,
 				04DFC42C27C5A461001AD5C8 /* Extensions.swift in Sources */,
 				047D5EB62473E1BD008D56EC /* SearchResultCell.swift in Sources */,
+				04459C1727C792B500690E44 /* ReviewsController.swift in Sources */,
 				0444EB7C27C6B41C001074A1 /* AppGroup.swift in Sources */,
 				0444EB7A27C6B0A5001074A1 /* AppsHeaderCell.swift in Sources */,
 				04459C1127C7850D00690E44 /* AppDetailCell.swift in Sources */,

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040CE95727C90717008AB8C5 /* AppFullscreenHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040CE95627C90717008AB8C5 /* AppFullscreenHeaderCell.swift */; };
 		0444EB7627C6B067001074A1 /* AppsPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444EB7527C6B067001074A1 /* AppsPageHeader.swift */; };
 		0444EB7827C6B082001074A1 /* AppsHeaderHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444EB7727C6B082001074A1 /* AppsHeaderHorizontalController.swift */; };
 		0444EB7A27C6B0A5001074A1 /* AppsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444EB7927C6B0A5001074A1 /* AppsHeaderCell.swift */; };
@@ -40,6 +41,7 @@
 		04DFC42827C5A38E001AD5C8 /* AppRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFC42727C5A38E001AD5C8 /* AppRowCell.swift */; };
 		04DFC42A27C5A41B001AD5C8 /* BaseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFC42927C5A41B001AD5C8 /* BaseListController.swift */; };
 		04DFC42C27C5A461001AD5C8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DFC42B27C5A461001AD5C8 /* Extensions.swift */; };
+		04E81BA027CA4014002166DB /* TodayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E81B9F27CA4014002166DB /* TodayItem.swift */; };
 		04F18CA0247CDFAF00C1BEE4 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F18C9F247CDFAF00C1BEE4 /* UIView+Layout.swift */; };
 		04F18CA3247CE2C500C1BEE4 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F18CA2247CE2C500C1BEE4 /* Service.swift */; };
 		04F18CA6247CE2FA00C1BEE4 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F18CA5247CE2FA00C1BEE4 /* Result.swift */; };
@@ -48,6 +50,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		040CE95627C90717008AB8C5 /* AppFullscreenHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenHeaderCell.swift; sourceTree = "<group>"; };
 		0444EB7527C6B067001074A1 /* AppsPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsPageHeader.swift; sourceTree = "<group>"; };
 		0444EB7727C6B082001074A1 /* AppsHeaderHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderHorizontalController.swift; sourceTree = "<group>"; };
 		0444EB7927C6B0A5001074A1 /* AppsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderCell.swift; sourceTree = "<group>"; };
@@ -83,6 +86,7 @@
 		04DFC42727C5A38E001AD5C8 /* AppRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRowCell.swift; sourceTree = "<group>"; };
 		04DFC42927C5A41B001AD5C8 /* BaseListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListController.swift; sourceTree = "<group>"; };
 		04DFC42B27C5A461001AD5C8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		04E81B9F27CA4014002166DB /* TodayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayItem.swift; sourceTree = "<group>"; };
 		04F18C9F247CDFAF00C1BEE4 /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		04F18CA2247CE2C500C1BEE4 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		04F18CA5247CE2FA00C1BEE4 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 			children = (
 				04459C1F27C7B34100690E44 /* TodayCell.swift */,
 				04753C9727C82ACB000F53CF /* AppFullscreenDescriptionCell.swift */,
+				040CE95627C90717008AB8C5 /* AppFullscreenHeaderCell.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -267,6 +272,7 @@
 				0444EB7B27C6B41C001074A1 /* AppGroup.swift */,
 				0444EB7D27C6C3E5001074A1 /* SocialApp.swift */,
 				04459C1C27C7954900690E44 /* Reviews.swift */,
+				04E81B9F27CA4014002166DB /* TodayItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -415,6 +421,8 @@
 				047D5EB32473E193008D56EC /* BaseTabBarController.swift in Sources */,
 				04DFC42827C5A38E001AD5C8 /* AppRowCell.swift in Sources */,
 				04459C2027C7B34100690E44 /* TodayCell.swift in Sources */,
+				04E81BA027CA4014002166DB /* TodayItem.swift in Sources */,
+				040CE95727C90717008AB8C5 /* AppFullscreenHeaderCell.swift in Sources */,
 				04DFC42627C5A380001AD5C8 /* AppsGroupCell.swift in Sources */,
 				047D5E9E2473DB63008D56EC /* SceneDelegate.swift in Sources */,
 				04753C9A27C82B07000F53CF /* AppFullscreenController.swift in Sources */,

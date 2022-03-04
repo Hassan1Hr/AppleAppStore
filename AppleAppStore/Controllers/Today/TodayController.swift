@@ -42,7 +42,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         }
         let fullscreenView = appFullscreenController.view!
         view.addSubview(fullscreenView)
-
+        
         addChild(appFullscreenController)
         
         self.appFullscreenController = appFullscreenController
@@ -58,7 +58,9 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
 
         // auto layout constraint animations
         // 4 anchors
+
         fullscreenView.translatesAutoresizingMaskIntoConstraints = false
+        
         topConstraint = fullscreenView.topAnchor.constraint(equalTo: view.topAnchor, constant: startingFrame.origin.y)
         leadingConstraint = fullscreenView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: startingFrame.origin.x)
         widthConstraint = fullscreenView.widthAnchor.constraint(equalToConstant: startingFrame.width)

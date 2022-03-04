@@ -11,14 +11,15 @@ import SDWebImage
 
 class AppsHorizontalController: HorizontalSnappingController, UICollectionViewDelegateFlowLayout {
     
-    let cellId = "cellId"
+    
     var appGroup: AppGroup?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
         
-        collectionView.register(AppRowCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(AppRowCell.self, forCellWithReuseIdentifier: AppRowCell.identifier)
+        collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
         
     }
     
@@ -35,7 +36,7 @@ class AppsHorizontalController: HorizontalSnappingController, UICollectionViewDe
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AppRowCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppRowCell.identifier, for: indexPath) as! AppRowCell
         
         let app = appGroup?.feed.results[indexPath.item]
         cell.nameLabel.text = app?.name
@@ -57,7 +58,7 @@ class AppsHorizontalController: HorizontalSnappingController, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: topBottomPadding, left: 16, bottom: topBottomPadding, right: 16)
+        return .init(top: topBottomPadding, left: 0, bottom: topBottomPadding, right: 0)
     }
     
 }

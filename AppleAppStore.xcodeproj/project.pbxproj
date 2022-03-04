@@ -114,6 +114,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0443F1E127D25FB500DE990C /* BaseTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				047D5EB22473E193008D56EC /* BaseTabBarController.swift */,
+				04DFC42927C5A41B001AD5C8 /* BaseListController.swift */,
+				0444EB8127C6CA7A001074A1 /* HorizontalSnappingController.swift */,
+			);
+			path = BaseTabBar;
+			sourceTree = "<group>";
+		};
 		0444EB8327C70480001074A1 /* App Details */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,9 +209,7 @@
 				04459C2127C7B36F00690E44 /* Today */,
 				04DFC41E27C5A2D3001AD5C8 /* Apps */,
 				04DFC41D27C5A2C8001AD5C8 /* Search */,
-				047D5EB22473E193008D56EC /* BaseTabBarController.swift */,
-				04DFC42927C5A41B001AD5C8 /* BaseListController.swift */,
-				0444EB8127C6CA7A001074A1 /* HorizontalSnappingController.swift */,
+				0443F1E127D25FB500DE990C /* BaseTabBar */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

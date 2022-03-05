@@ -74,12 +74,16 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
             self.activityIndicatorView.stopAnimating()
             
             self.items = [
+                TodayItem.init(category: "LIFE HACK", title: "Utilizing your Time", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way.", backgroundColor: .white, cellType: .single, apps: []),
+                
                 TodayItem.init(category: "Daily List", title: topGrossingGroup?.feed.title ?? "", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, cellType: .multiple, apps: topGrossingGroup?.feed.results ?? []),
                 
-                TodayItem.init(category: "Daily List", title: gamesGroup?.feed.title ?? "", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, cellType: .multiple, apps: gamesGroup?.feed.results ?? []),
-                
-                TodayItem.init(category: "LIFE HACK", title: "Utilizing your Time", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way.", backgroundColor: .white, cellType: .single, apps: []),
                 TodayItem.init(category: "HOLIDAYS", title: "Travel on a Budget", image: #imageLiteral(resourceName: "holiday"), description: "Find out all you need to know on how to travel without packing everything!", backgroundColor: #colorLiteral(red: 0.9838578105, green: 0.9588007331, blue: 0.7274674177, alpha: 1), cellType: .single, apps: []),
+                
+                TodayItem.init(category: "Daily List", title: gamesGroup?.feed.title ?? "", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, cellType: .multiple, apps: gamesGroup?.feed.results ?? [])
+                
+                
+               
                 
             ]
             
@@ -148,8 +152,6 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
                 
                 var scale = 1 - trueOffset / 1000
                 
-                print(trueOffset, scale)
-                
                 scale = min(1, scale)
                 scale = max(0.5, scale)
                 
@@ -196,6 +198,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             
             self.blurVisualEffectView.alpha = 1
+            
             self.anchoredConstraints?.top?.constant = 0
             self.anchoredConstraints?.leading?.constant = 0
             self.anchoredConstraints?.width?.constant = self.view.frame.width
@@ -249,7 +252,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
             guard let cell = self.appFullscreenController.tableView.cellForRow(at: [0, 0]) as? AppFullscreenHeaderCell else { return }
             
             cell.todayCell.topConstraint.constant = 24
-            cell.closeButton.alpha = 0
+            self.appFullscreenController.closeButton.alpha = 0
             cell.layoutIfNeeded()
             
         }, completion: { _ in

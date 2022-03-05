@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
+class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate {
     
     var items = [TodayItem]()
     
@@ -21,10 +21,14 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     }()
     
     var appFullscreenController: AppFullscreenController!
-    
+    let blurVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(blurVisualEffectView)
+        blurVisualEffectView.fillSuperview()
+        blurVisualEffectView.alpha = 0
         
         view.addSubview(activityIndicatorView)
         activityIndicatorView.centerInSuperview()
@@ -84,11 +88,6 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         
     }
     
-    var topConstraint: NSLayoutConstraint?
-    var leadingConstraint: NSLayoutConstraint?
-    var widthConstraint: NSLayoutConstraint?
-    var heightConstraint: NSLayoutConstraint?
-    
     fileprivate func showDailyListFullScreen(_ indexPath: IndexPath) {
         let fullController = TodayMultipleAppsController(mode: .fullscreen)
         fullController.apps = self.items[indexPath.item].apps
@@ -112,12 +111,57 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         let appFullscreenController = AppFullscreenController()
         appFullscreenController.todayItem = items[indexPath.row]
         appFullscreenController.dismissHandler = {
-            self.handleRemoveRedView()
+            self.handleAppFullscreenDismissal()
         }
         appFullscreenController.modalPresentationStyle = .fullScreen
         
         appFullscreenController.view.layer.cornerRadius = 16
         self.appFullscreenController = appFullscreenController
+        
+        // #1 setup our pan gesture
+        let gesture = UIPanGestureRecognizer(target: self, action: #selector(handleDrag))
+        gesture.delegate = self
+        appFullscreenController.view.addGestureRecognizer(gesture)
+        
+    }
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    var appFullscreenBeginOffset: CGFloat = 0
+    
+    @objc fileprivate func handleDrag(gesture: UIPanGestureRecognizer) {
+        if gesture.state == .began {
+            appFullscreenBeginOffset = appFullscreenController.tableView.contentOffset.y
+            //            print(appFullscreenBeginOffset)
+        }
+        
+        if appFullscreenController.tableView.contentOffset.y > 0 {
+            return
+        }
+        
+        let translationY = gesture.translation(in: appFullscreenController.view).y
+        print(translationY)
+        
+        if gesture.state == .changed {
+            if translationY > 0 {
+                let trueOffset = translationY - appFullscreenBeginOffset
+                
+                var scale = 1 - trueOffset / 1000
+                
+                print(trueOffset, scale)
+                
+                scale = min(1, scale)
+                scale = max(0.5, scale)
+                
+                let transform: CGAffineTransform = .init(scaleX: scale, y: scale)
+                self.appFullscreenController.view.transform = transform
+            }
+            
+        } else if gesture.state == .ended {
+            if translationY > 0 {
+                handleAppFullscreenDismissal()
+            }
+        }
     }
     
     fileprivate func setupStartingCellFrame(_ indexPath: IndexPath) {
@@ -151,6 +195,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     fileprivate func beginAnimationAppFullscreen() {
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             
+            self.blurVisualEffectView.alpha = 1
             self.anchoredConstraints?.top?.constant = 0
             self.anchoredConstraints?.leading?.constant = 0
             self.anchoredConstraints?.width?.constant = self.view.frame.width
@@ -182,16 +227,20 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     
     var startingFrame: CGRect?
     
-    @objc func handleRemoveRedView() {
+    @objc func handleAppFullscreenDismissal() {
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+            
+            self.blurVisualEffectView.alpha = 0
+            self.appFullscreenController.view.transform = .identity
             
             self.appFullscreenController.tableView.contentOffset = .zero
             
+            
             guard let startingFrame = self.startingFrame else { return }
-            self.topConstraint?.constant = startingFrame.origin.y
-            self.leadingConstraint?.constant = startingFrame.origin.x
-            self.widthConstraint?.constant = startingFrame.width
-            self.heightConstraint?.constant = startingFrame.height
+            self.anchoredConstraints?.top?.constant = startingFrame.origin.y
+            self.anchoredConstraints?.leading?.constant = startingFrame.origin.x
+            self.anchoredConstraints?.width?.constant = startingFrame.width
+            self.anchoredConstraints?.height?.constant = startingFrame.height
             
             self.view.layoutIfNeeded()
             
@@ -200,6 +249,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
             guard let cell = self.appFullscreenController.tableView.cellForRow(at: [0, 0]) as? AppFullscreenHeaderCell else { return }
             
             cell.todayCell.topConstraint.constant = 24
+            cell.closeButton.alpha = 0
             cell.layoutIfNeeded()
             
         }, completion: { _ in

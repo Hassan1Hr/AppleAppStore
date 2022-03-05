@@ -31,6 +31,7 @@ class TodayMultipleAppsController: BaseListController, UICollectionViewDelegateF
         
         if mode == .fullscreen {
             setupCloseButton()
+            navigationController?.isNavigationBarHidden = true
         } else {
             collectionView.isScrollEnabled = false
         }
@@ -45,6 +46,13 @@ class TodayMultipleAppsController: BaseListController, UICollectionViewDelegateF
         view.addSubview(closeButton)
         closeButton.anchor(top: view.topAnchor, leading: nil, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 20, left: 0, bottom: 0, right: 16), size: .init(width: 44, height: 44))
     }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let appId = self.apps[indexPath.item].id
+        let appDetailController = AppDetailController(appId: appId)
+
+        navigationController?.pushViewController(appDetailController, animated: true)
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if mode == .fullscreen {

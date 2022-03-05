@@ -95,7 +95,9 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
             let fullController = TodayMultipleAppsController(mode: .fullscreen)
             fullController.apps = self.items[indexPath.item].apps
             fullController.modalPresentationStyle = .fullScreen
-            present(fullController, animated: true)
+            let NavC = BackEnabledNavigationController(rootViewController: fullController)
+            NavC.modalPresentationStyle = .fullScreen
+            present(NavC, animated: true)
             return
         }
         let appFullscreenController = AppFullscreenController()
@@ -103,7 +105,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         appFullscreenController.dismissHandler = {
             self.handleRemoveRedView()
         }
-        
+        appFullscreenController.modalPresentationStyle = .fullScreen
         let fullscreenView = appFullscreenController.view!
         view.addSubview(fullscreenView)
         
@@ -214,7 +216,9 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
                 let fullController = TodayMultipleAppsController(mode: .fullscreen)
                 fullController.apps = apps
                 fullController.modalPresentationStyle = .fullScreen
-                present(fullController, animated: true)
+                let NavC = BackEnabledNavigationController(rootViewController: fullController)
+                NavC.modalPresentationStyle = .fullScreen
+                present(NavC, animated: true)
                 return
             }
             
@@ -222,7 +226,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         }
     }
     
-    static let cellSize: CGFloat = 500
+    static let cellSize: CGFloat = 450
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: view.frame.width - 64, height: TodayController.cellSize)

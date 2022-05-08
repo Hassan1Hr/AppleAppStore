@@ -70,7 +70,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
         dispatchGroup.notify(queue: .main) {
             // I'll have access to top grossing and games somehow
             
-            print("Finished fetching")
+       //     print("Finished fetching")
             self.activityIndicatorView.stopAnimating()
             
             self.items = [
@@ -81,10 +81,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
                 TodayItem.init(category: "HOLIDAYS", title: "Travel on a Budget", image: #imageLiteral(resourceName: "holiday"), description: "Find out all you need to know on how to travel without packing everything!", backgroundColor: #colorLiteral(red: 0.9838578105, green: 0.9588007331, blue: 0.7274674177, alpha: 1), cellType: .single, apps: []),
                 
                 TodayItem.init(category: "Daily List", title: gamesGroup?.feed.title ?? "", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, cellType: .multiple, apps: gamesGroup?.feed.results ?? [])
-                
-                
-               
-                
+             
             ]
             
             self.collectionView.reloadData()
@@ -305,7 +302,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
     static let cellSize: CGFloat = 450
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.frame.width - 64, height: TodayController.cellSize)
+        return .init(width: view.frame.width - 50, height: TodayController.cellSize)
     }
     
     

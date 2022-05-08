@@ -15,7 +15,7 @@ class Service {
     
     
     func fetchApps(searchTerm: String, completion: @escaping (SearchResult?, Error?) -> ()) {
-        print("Fetching itunes apps from Service layer")
+    //    print("Fetching itunes apps from Service layer")
         
         let urlString = "https://itunes.apple.com/search?term=\(searchTerm)&entity=software"
         fetchGenericJSONData(urlString: urlString, completion: completion) // fires off the request

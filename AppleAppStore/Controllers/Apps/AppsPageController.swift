@@ -18,6 +18,8 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     
     
     let activityIndicatorView: UIActivityIndicatorView = {
+        
+    
         let aiv = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
         aiv.color = .black
         aiv.startAnimating()
@@ -53,14 +55,14 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         
         dispatchGroup.enter()
         Service.shared.fetchTopFree { (appGroup, err) in
-            print("Done with games")
+          //  print("Done with games")
             dispatchGroup.leave()
             group1 = appGroup
         }
         
         dispatchGroup.enter()
         Service.shared.fetchTopPaid { (appGroup, err) in
-            print("Done with top grossing")
+        //    print("Done with top grossing")
             dispatchGroup.leave()
             group2 = appGroup
         }
@@ -68,7 +70,7 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         dispatchGroup.enter()
         Service.shared.fetchAppGroup(urlString: "https://rss.applemarketingtools.com/api/v2/us/apps/top-paid/25/apps.json") { (appGroup, err) in
             dispatchGroup.leave()
-            print("Done with free games")
+        //    print("Done with free games")
             group3 = appGroup
         }
         
@@ -82,7 +84,7 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         
         // completion
         dispatchGroup.notify(queue: .main) {
-            print("completed your dispatch group tasks...")
+           // print("completed your dispatch group tasks...")
             
             self.activityIndicatorView.stopAnimating()
             if var group = group1 {

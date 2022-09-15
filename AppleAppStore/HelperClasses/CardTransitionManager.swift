@@ -6,4 +6,24 @@
 //  Copyright © 2022 Hassan Ramadan Ali. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class CardTransitionManager: NSObject{
+    
+    
+}
+
+extension CardTransitionManager: UIViewControllerAnimatedTransitioning{
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return TimeInterval()
+    }
+    
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        
+    }
+    
+}
+
+extension CardTransitionManager: UIViewControllerTransitioningDelegate{
+    
+}
